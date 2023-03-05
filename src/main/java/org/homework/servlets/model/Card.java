@@ -1,15 +1,31 @@
 package org.homework.servlets.model;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "cards")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Card {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-  private String title;
-  private String text;
-  private String imgUrl;
+    @Column(name="title")
+    private String title;
 
-    public Card(String title, String cardText, String cardImgUrl){
-        this.title = title;
-        this.text = cardText;
-        this.imgUrl = cardImgUrl;
-    }
+    @Column(name="description")
+    private String text;
+
+    @Column(name="img_url")
+    private String imgUrl;
 
 }
